@@ -1,0 +1,82 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+
+<head>
+  <title>Getting Started Extension's Popup</title>
+  <style type="text/css">
+    body {
+      width: 450px;
+      margin: 20px !important;
+      white-space: nowrap;
+    }
+  </style>
+  <script src="jquery.min.js"></script>
+  <script src="popup.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.5.3/css/bulma.css" crossorigin="anonymous">
+  <link href="flags.css" rel=stylesheet type="text/css">
+</head>
+
+<body>
+  <!-- <h5 class="title is-5">Seguir encomendas</h5> -->
+  <div class="tabs is-centered">
+    <ul>
+      <li class="is-active"><a>Encomendas</a></li>
+    </ul>
+  </div>
+  <form>
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <input id="package_name" class="input is-small" type="text" placeholder="Nome da encomenda">
+        <span class="icon is-small is-left">
+              <i class="fa fa-thumb-tack"></i>
+            </span>
+        <span class="icon is-small is-right">
+              <i class="fa fa-check"></i>
+            </span>
+      </div>
+    </div>
+    <div class="field">
+      <div class="control has-icons-left has-icons-right">
+        <input id="package_id" class="input is-small" type="text" placeholder="Codigo da encomenda">
+        <span class="icon is-small is-left">
+                    <i class="fa fa-truck"></i>
+                  </span>
+        <span class="icon is-small is-right">
+                    <i class="fa fa-check"></i>
+                  </span>
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button id="submitForm" type="button" class="button is-small is-primary">Adicionar</button>
+      </div>
+      <div class="control">
+        <button id="updateTable" type="button" class="button is-small is-link">Atualizar</button>
+      </div>
+    </div>
+  </form>
+  <br />
+  <table style="font-size:12px;" class="table is-fullwidth is-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Estado</th>
+        <th>Data</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody id="packageTable">
+    </tbody>
+  </table>
+
+  <a href="http://twitter.com/@xikolarico" class="button is-small is-link is-pulled-right">Feito por Francisco Rodrigues (@xikolarico)</a>
+  <a href="https://geartrack.hdn.pt/" class="button is-small is-link is-pulled-right">Powered by Geatrack.hdn.pt</a>
+</body>
+
+</html>
