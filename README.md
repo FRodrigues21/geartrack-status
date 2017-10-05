@@ -13,3 +13,7 @@ Os dados apresentados são da responsabilidade do site geartrack.hdn.pt
 O desenvolvimento é feito por @xikolarico (frodrigues21) e a aplicação é maioritariamente para uso pessoal.
 
 Poderá ser publicada na loja de extensões num futuro próximo.
+
+## Screenshots
+
+![Desktop](https://i.imgur.com/2mFQOvi.png)
