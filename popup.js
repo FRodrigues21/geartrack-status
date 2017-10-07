@@ -49,18 +49,22 @@ function formatState(state) {
 // Right now it's only using the Panasia tracker
 function getPackageState(id) {
   if (hasPackage(id)) {
-    $.getJSON("https://geartrack.hdn.pt/api/panasia?id=" + id, function(data) {
-      var name = getPackageName(id);
-      var state = data.states[0];
-      $("#packageTable").append(
-        `<tr id="${data.id}">
+    $.getJSON("https://geartrack.hdn.pt/api/panasia?id=" + id)
+      .done(function(data) {
+        var name = getPackageName(id);
+        var state = data.states[0];
+        $("#packageTable").append(
+          `<tr id="${data.id}">
         <td>${name}</td>
         <td>${formatState(state.state)}</td>
         <td>${new Date(state.date).toLocaleString()}</td>
         <td><i id="remove_${data.id}" class="fa fa-trash"></i></td>
         </tr>`
-      );
-    });
+        );
+      })
+      .fail(function() {
+        deletePackage(id);
+      });
   }
 }
 
@@ -81,6 +85,7 @@ $(document).ready(function() {
     var name = document.getElementById("package_name").value;
     var id = document.getElementById("package_id").value;
     addPackage(name, id);
+    switchTab(document.getElementById("li_packages"), "tab_packages");
   });
   $("body").on("click", "i", function() {
     var id = $(this)
@@ -89,7 +94,9 @@ $(document).ready(function() {
     deletePackage(id);
   });
   $("body").on("click", "a", function() {
-    chrome.tabs.create({ url: $(this).attr("href") });
+    if ($(this).attr("href")) {
+      chrome.tabs.create({ url: $(this).attr("href") });
+    }
     return false;
   });
 });

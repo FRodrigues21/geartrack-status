@@ -11,7 +11,7 @@
   },
   "content_scripts": [
     {
-      "js": ["jquery.min.js", "popup.js"],
+      "js": ["jquery.min.js", "popup.js", "tabs.js"],
       "matches": ["http://*/*", "https://*/*"]
     }
   ],
